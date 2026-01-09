@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Recipe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="logo">My Recipe</h1>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search a Recipe"
+    />
+  </header>
+
+  <div class="main-container">
+  <aside class="sidebar">
+    <h3>Cuisines</h3>
+
+    <label><input type="checkbox" value="Indian"> Indian</label>
+    <label><input type="checkbox" value="South Indian"> South Indian</label>
+    <label><input type="checkbox" value="Punjabi"> Punjabi</label>
+    <label><input type="checkbox" value="Chinese"> Chinese</label>
+  </aside>
+
+  <div class="content">
+    <p id="loadingText">Loading recipes...</p>
+    <section id="recipeContainer" class="recipes"></section>
+  </div>
+</div>
+
+<!-- Recipe Modal -->
+<div id="recipeModal" class="modal hidden">
+  <div class="modal-content">
+    <span id="closeModal">&times;</span>
+
+    <img id="modalImage" />
+    <h2 id="modalTitle"></h2>
+    <p id="modalCuisine"></p>
+    <p id="modalTime"></p>
+
+    <h3>Ingredients</h3>
+    <ul id="modalIngredients"></ul>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
