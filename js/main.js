@@ -33,25 +33,30 @@ init();
 
 
 function attachFilterEvents() {
-  const applyBtn = document.getElementById("applyFilters");
-const clearBtn = document.getElementById("clearFilters");
+  applyBtn.addEventListener("click", () => {
+    const cuisine = cuisineFilter.value;
+    const maxTime = timeFilter.value;
 
-applyBtn.addEventListener("click", () => {
-  const filtered = applyFilters(allRecipes);
-  renderRecipes(filtered, recipeContainer, openModal);
-});
+    const filtered = applyFilters(
+      allRecipes,
+      cuisine,
+      maxTime
+    );
 
-clearBtn.addEventListener("click", () => {
-  document.getElementById("cuisineFilter").value = "All";
-  document.getElementById("timeFilter").value = "";
-  renderRecipes(allRecipes, recipeContainer, openModal);
-});
+    renderRecipes(filtered, recipeContainer, openModal);
+  });
+
+  clearBtn.addEventListener("click", () => {
+    cuisineFilter.value = "All";
+    timeFilter.value = "";
+    renderRecipes(allRecipes, recipeContainer, openModal);
+  });
 }
+
 
 function clearFilters() {
   cuisineFilter.value = "All";
   timeFilter.value = "";
   renderRecipes(allRecipes, recipeContainer, openModal);
 }
-applyBtn.addEventListener("click", applyFilters);
-clearBtn.addEventListener("click", clearFilters);
+

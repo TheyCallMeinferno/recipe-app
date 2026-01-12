@@ -1,23 +1,16 @@
-export function applyFilters(recipes) {
-  const cuisineSelect = document.getElementById("cuisineFilter");
-  const timeInput = document.getElementById("timeFilter");
+export function applyFilters(recipes, cuisine, maxTime) {
+  let filtered = recipes;
 
-  let filtered = [...recipes];
-
-  // Cuisine filter
-  if (cuisineSelect && cuisineSelect.value !== "All") {
-    filtered = filtered.filter(
-      r => r.cuisine === cuisineSelect.value
-    );
+  if (cuisine !== "All") {
+    filtered = filtered.filter(r => r.cuisine === cuisine);
   }
 
-  // Time filter
-  if (timeInput && timeInput.value) {
-    const maxTime = Number(timeInput.value);
+  if (maxTime) {
     filtered = filtered.filter(
-      r => Number(r.time.replace(/\D/g, "")) <= maxTime
+      r => parseInt(r.time) <= parseInt(maxTime)
     );
   }
 
   return filtered;
 }
+
