@@ -1,20 +1,21 @@
-export function applyFilters(allRecipes, searchInput, checkboxes) {
-  let filtered = [...allRecipes];
+export function applyFilters(recipes) {
+  const cuisineSelect = document.getElementById("cuisineFilter");
+  const timeInput = document.getElementById("timeFilter");
 
-  const searchText = searchInput.value.toLowerCase();
-  if (searchText) {
-    filtered = filtered.filter(r =>
-      r.name.toLowerCase().includes(searchText)
+  let filtered = [...recipes];
+
+  // Cuisine filter
+  if (cuisineSelect && cuisineSelect.value !== "All") {
+    filtered = filtered.filter(
+      r => r.cuisine === cuisineSelect.value
     );
   }
 
-  const selectedCuisines = [...checkboxes]
-    .filter(c => c.checked)
-    .map(c => c.value);
-
-  if (selectedCuisines.length > 0) {
-    filtered = filtered.filter(r =>
-      selectedCuisines.includes(r.cuisine)
+  // Time filter
+  if (timeInput && timeInput.value) {
+    const maxTime = Number(timeInput.value);
+    filtered = filtered.filter(
+      r => Number(r.time.replace(/\D/g, "")) <= maxTime
     );
   }
 

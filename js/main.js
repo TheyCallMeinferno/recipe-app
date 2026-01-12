@@ -46,21 +46,16 @@ function renderCuisineFilters(recipes) {
 }
 
 function attachFilterEvents() {
-  const checkboxes = document.querySelectorAll("#cuisineFilters input");
+  const applyBtn = document.getElementById("applyFilters");
+const clearBtn = document.getElementById("clearFilters");
 
-  checkboxes.forEach(cb => {
-    cb.addEventListener("change", () => {
-      const selected = [...checkboxes]
-        .filter(c => c.checked)
-        .map(c => c.value);
+applyBtn.addEventListener("click", () => {
+  const filtered = applyFilters(allRecipes);
+  renderRecipes(filtered, recipeContainer, openModal);
+});
 
-      const filtered =
-        selected.length === 0
-          ? allRecipes
-          : allRecipes.filter(r => selected.includes(r.cuisine));
-
-      renderRecipes(filtered, recipeContainer, openModal);
-    });
-  });
-}
-
+clearBtn.addEventListener("click", () => {
+  document.getElementById("cuisineFilter").value = "All";
+  document.getElementById("timeFilter").value = "";
+  renderRecipes(allRecipes, recipeContainer, openModal);
+});
