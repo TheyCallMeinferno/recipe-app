@@ -10,17 +10,6 @@ let allRecipes = [];
 
 // Load recipes (like API)
 const loadingText = document.getElementById("loadingText");
-<<<<<<< HEAD
-axios.get("https://dummyjson.com/recipes")
-
-=======
-fetch("recipes.json")
->>>>>>> 6babccbdf462a41d3322074e3dd50b274343d5a7
-  .then(res => res.json())
-  .then(data => {
-    allRecipes = data;
-    renderRecipes(allRecipes);
-  });
 
 function renderRecipes(recipes) {
   if (loadingText) {
