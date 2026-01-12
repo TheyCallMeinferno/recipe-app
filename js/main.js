@@ -6,6 +6,11 @@ import { openModal } from "./modal.js";
 const recipeContainer = document.getElementById("recipeContainer");
 const searchInput = document.getElementById("searchInput");
 const checkboxes = document.querySelectorAll(".sidebar input");
+const cuisineFilter = document.getElementById("cuisineFilter");
+const timeFilter = document.getElementById("timeFilter");
+const applyBtn = document.getElementById("applyFilters");
+const clearBtn = document.getElementById("clearFilters");
+
 
 let allRecipes = [];
 
@@ -17,7 +22,7 @@ async function init() {
     name: r.name,
     cuisine: r.cuisine,
     image: r.image,
-    time: `${r.prepTimeMinutes} mins`,
+    time: r.prepTimeMinutes + " mins",
     ingredients: r.ingredients
   }));
   
@@ -42,3 +47,30 @@ clearBtn.addEventListener("click", () => {
   renderRecipes(allRecipes, recipeContainer, openModal);
 });
 }
+function applyFilters() {
+  let filtered = [...allRecipes];
+
+  const selectedCuisine = cuisineFilter.value;
+  const maxTime = timeFilter.value;
+
+  if (selectedCuisine !== "All") {
+    filtered = filtered.filter(
+      recipe => recipe.cuisine === selectedCuisine
+    );
+  }
+
+  if (maxTime) {
+    filtered = filtered.filter(
+      recipe => parseInt(recipe.time) <= parseInt(maxTime)
+    );
+  }
+
+  renderRecipes(filtered, recipeContainer, openModal);
+}
+function clearFilters() {
+  cuisineFilter.value = "All";
+  timeFilter.value = "";
+  renderRecipes(allRecipes, recipeContainer, openModal);
+}
+applyBtn.addEventListener("click", applyFilters);
+clearBtn.addEventListener("click", clearFilters);
