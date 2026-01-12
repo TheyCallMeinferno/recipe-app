@@ -47,26 +47,7 @@ clearBtn.addEventListener("click", () => {
   renderRecipes(allRecipes, recipeContainer, openModal);
 });
 }
-function applyFilters() {
-  let filtered = [...allRecipes];
 
-  const selectedCuisine = cuisineFilter.value;
-  const maxTime = timeFilter.value;
-
-  if (selectedCuisine !== "All") {
-    filtered = filtered.filter(
-      recipe => recipe.cuisine === selectedCuisine
-    );
-  }
-
-  if (maxTime) {
-    filtered = filtered.filter(
-      recipe => parseInt(recipe.time) <= parseInt(maxTime)
-    );
-  }
-
-  renderRecipes(filtered, recipeContainer, openModal);
-}
 function clearFilters() {
   cuisineFilter.value = "All";
   timeFilter.value = "";
