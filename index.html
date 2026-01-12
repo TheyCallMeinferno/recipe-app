@@ -16,32 +16,35 @@
     />
   </header>
 
-  <div class="main-container">
+<div class="main-container">
   <aside class="sidebar">
     <h2>Filters</h2>
 
-<select id="cuisineFilter">
-  <option value="All">All</option>
-  <option value="Italian">Italian</option>
-  <option value="American">American</option>
-  <option value="Asian">Asian</option>
-  <option value="Mexican">Mexican</option>
-</select>
+    <select id="cuisineFilter">
+      <option value="All">All</option>
+      <option value="Italian">Italian</option>
+      <option value="American">American</option>
+      <option value="Asian">Asian</option>
+      <option value="Mexican">Mexican</option>
+    </select>
 
-<input
-  type="number"
-  id="timeFilter"
-  placeholder="Max cooking time (mins)"
-/>
+    <input
+      type="number"
+      id="timeFilter"
+      placeholder="Max cooking time (mins)"
+    />
 
-<button id="applyFilters">Apply Filters</button>
-<button id="clearFilters">Clear Filters</button>
+    <button id="applyFilters">Apply Filters</button>
+    <button id="clearFilters">Clear Filters</button>
   </aside>
 
-  <main id="recipe-container" class="recipes">
-    <!-- Recipes will be dynamically inserted here -->
-  </main>
+  <!-- ✅ ADD THIS -->
+  <div class="content">
+    <main id="recipeContainer" class="recipes">
+      <!-- Recipes will be dynamically inserted here -->
+    </main>
   </div>
+</div>
 
 <!-- Recipe Modal -->
 <div id="recipeModal" class="modal hidden">
