@@ -20,29 +20,12 @@ async function init() {
     time: `${r.prepTimeMinutes} mins`,
     ingredients: r.ingredients
   }));
+  
   renderRecipes(allRecipes, recipeContainer, openModal);
-
   attachFilterEvents();
 }
 init();
 
-function renderCuisineFilters(recipes) {
-  const container = document.getElementById("cuisineFilters");
-  container.innerHTML = "";
-
-  const cuisines = [...new Set(recipes.map(r => r.cuisine))];
-
-  cuisines.forEach(cuisine => {
-    const label = document.createElement("label");
-
-    label.innerHTML = `
-      <input type="checkbox" value="${cuisine}">
-      ${cuisine}
-    `;
-
-    container.appendChild(label);
-  });
-}
 
 function attachFilterEvents() {
   const applyBtn = document.getElementById("applyFilters");
