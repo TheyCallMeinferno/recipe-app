@@ -1,4 +1,4 @@
-export function renderRecipes(recipes, container, openModal) {
+export function renderRecipes(recipes, container) {
   container.innerHTML = "";
 
   if (recipes.length === 0) {
@@ -13,13 +13,17 @@ export function renderRecipes(recipes, container, openModal) {
     card.innerHTML = `
       <img src="${recipe.image}" />
       <div class="recipe-info">
-        <h4>${recipe.name}</h4>
+        <h3>${recipe.name}</h3>
         <p>Cuisine: ${recipe.cuisine}</p>
-        <p>⏱ ${recipe.time}</p>
+        <p>${recipe.time}</p>
       </div>
     `;
 
-    card.addEventListener("click", () => openModal(recipe));
+    // ✅ THIS IS THE KEY LINE
+    card.addEventListener("click", () => {
+      window.location.href = `single-recipe.html?id=${recipe.id}`;
+    });
+
     container.appendChild(card);
   });
 }
