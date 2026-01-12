@@ -10,7 +10,8 @@ let allRecipes = [];
 
 // Load recipes (like API)
 const loadingText = document.getElementById("loadingText");
-fetch("recipes.json")
+axios.get("https://dummyjson.com/recipes")
+
   .then(res => res.json())
   .then(data => {
     allRecipes = data;
