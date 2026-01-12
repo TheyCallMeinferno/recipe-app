@@ -18,14 +18,25 @@
 
   <div class="main-container">
   <aside class="sidebar">
-    <h3>Cuisines</h3>
- <div id="cuisineFilters"></div>
- <label><input type="checkbox" value="Italian"> Italian</label>
-<label><input type="checkbox" value="American"> American</label>
-<label><input type="checkbox" value="Asian"> Asian</label>
-<label><input type="checkbox" value="Mexican"> Mexican</label>
-<label><input type="checkbox" value="Mediterranean"> Mediterranean</label>
+    <h2>Filters</h2>
+    <div class="filter-group">
+      <label for="cuisineFilter">Cuisine:</label>
+      <select id="cuisineFilter">
+        <option value="">All</option>
+        <option value="Italian">Italian</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Indian">Indian</option>
+        <option value="Mexican">Mexican</option>
+      </select>
+    </div>
 
+    <div class="filter-group">
+      <label for="timeFilter">Max Cooking Time (mins):</label>
+      <input type="number" id="timeFilter" min="0" />
+    </div>
+
+    <button id="applyFilters">Apply Filters</button>
+    <button id="clearFilters">Clear Filters</button>
   </aside>
 
   <div class="content">
