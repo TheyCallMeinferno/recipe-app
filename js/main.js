@@ -62,3 +62,4 @@ clearBtn.addEventListener("click", () => {
   document.getElementById("timeFilter").value = "";
   renderRecipes(allRecipes, recipeContainer, openModal);
 });
+}
