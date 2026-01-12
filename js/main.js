@@ -21,7 +21,10 @@ async function init() {
     ingredients: r.ingredients
   }));
   renderCuisineFilters(allRecipes);
+  renderCuisineFilters(allRecipes);
   renderRecipes(allRecipes, recipeContainer, openModal);
+
+  attachFilterEvents();
 
   attachFilterEvents();
 }
