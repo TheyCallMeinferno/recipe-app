@@ -17,9 +17,11 @@ async function init() {
     name: r.name,
     cuisine: r.cuisine,
     image: r.image,
-    time: `${r.prepTimeMinutes} mins`
+    time: `${r.prepTimeMinutes} mins`,
+    ingredients: r.ingredients
   }));
 
   renderRecipes(allRecipes, recipeContainer, openModal);
 }
 
+init();
