@@ -25,8 +25,6 @@ async function init() {
   renderRecipes(allRecipes, recipeContainer, openModal);
 
   attachFilterEvents();
-
-  attachFilterEvents();
 }
 init();
 

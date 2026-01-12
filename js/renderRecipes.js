@@ -1,4 +1,7 @@
 export function renderRecipes(recipes, container) {
+  const loadingText = document.getElementById("loadingText");
+  if (loadingText) loadingText.style.display = "none";
+
   container.innerHTML = "";
 
   if (recipes.length === 0) {
@@ -19,7 +22,6 @@ export function renderRecipes(recipes, container) {
       </div>
     `;
 
-    // ✅ THIS IS THE KEY LINE
     card.addEventListener("click", () => {
       window.location.href = `single-recipe.html?id=${recipe.id}`;
     });
