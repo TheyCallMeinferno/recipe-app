@@ -20,7 +20,6 @@ async function init() {
     time: `${r.prepTimeMinutes} mins`,
     ingredients: r.ingredients
   }));
-  renderCuisineFilters(allRecipes);
   renderRecipes(allRecipes, recipeContainer, openModal);
 
   attachFilterEvents();
