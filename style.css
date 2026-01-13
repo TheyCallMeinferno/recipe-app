@@ -140,8 +140,11 @@ body {
   }
 
   .recipes {
-    grid-template-columns: 1fr;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
 
   .recipe-card {
     width: 100%;
