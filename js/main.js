@@ -34,17 +34,24 @@ init();
 
 function attachFilterEvents() {
   applyBtn.addEventListener("click", () => {
-    const cuisine = cuisineFilter.value;
-    const maxTime = timeFilter.value;
+  const searchText = searchInput.value;
+  const cuisine = cuisineFilter.value;
+  const maxTime = timeFilter.value;
 
-    const filtered = applyFilters(
-      allRecipes,
-      cuisine,
-      maxTime
-    );
+  const filtered = applyFilters(
+    allRecipes,
+    searchText,
+    cuisine,
+    maxTime
+  );
 
-    renderRecipes(filtered, recipeContainer, openModal);
+  renderRecipes(filtered, recipeContainer, openModal);
+});
+
+searchInput.addEventListener("input", () => {
+    applyBtn.click();
   });
+
 
   clearBtn.addEventListener("click", () => {
     cuisineFilter.value = "All";
@@ -58,5 +65,36 @@ function clearFilters() {
   cuisineFilter.value = "All";
   timeFilter.value = "";
   renderRecipes(allRecipes, recipeContainer, openModal);
+}
+
+function applyAllFilters() {
+  const searchText = searchInput.value.toLowerCase();
+  const selectedCuisine = cuisineFilter.value;
+  const maxTime = timeFilter.value;
+
+  let filtered = allRecipes;
+
+  //  Search filter
+  if (searchText) {
+    filtered = filtered.filter(recipe =>
+      recipe.name.toLowerCase().includes(searchText)
+    );
+  }
+
+  //  Cuisine filter
+  if (selectedCuisine !== "All") {
+    filtered = filtered.filter(
+      recipe => recipe.cuisine === selectedCuisine
+    );
+  }
+
+  //  Time filter
+  if (maxTime) {
+    filtered = filtered.filter(recipe =>
+      parseInt(recipe.time) <= parseInt(maxTime)
+    );
+  }
+
+  renderRecipes(filtered, recipeContainer, openModal);
 }
 

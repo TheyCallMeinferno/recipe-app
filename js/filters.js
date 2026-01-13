@@ -1,16 +1,14 @@
-export function applyFilters(recipes, cuisine, maxTime) {
-  let filtered = recipes;
+export function applyFilters(recipes, searchText, cuisine, maxTime) {
+  return recipes.filter(recipe => {
+    const matchesSearch =
+      recipe.name.toLowerCase().includes(searchText.toLowerCase());
 
-  if (cuisine !== "All") {
-    filtered = filtered.filter(r => r.cuisine === cuisine);
-  }
+    const matchesCuisine =
+      cuisine === "All" || recipe.cuisine === cuisine;
 
-  if (maxTime) {
-    filtered = filtered.filter(
-      r => parseInt(r.time) <= parseInt(maxTime)
-    );
-  }
+    const matchesTime =
+      !maxTime || parseInt(recipe.time) <= parseInt(maxTime);
 
-  return filtered;
+    return matchesSearch && matchesCuisine && matchesTime;
+  });
 }
-
